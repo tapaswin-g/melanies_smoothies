@@ -4,9 +4,6 @@ from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 import requests
 
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response)
-
 # Write directly to the app
 st.title(":cup_with_straw: Customize your Smoothie!! :cup_with_straw:")
 st.write(
@@ -37,6 +34,12 @@ if ingredients_list:
 
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
             values ('""" + ingredients_string + """','"""+name_on_order+ """')"""
+
+
+  
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response)
+  
 
     #st.write(my_insert_stmt)
     time_to_insert = st.button("Submit Order")
